@@ -1,9 +1,20 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
-import { Box, Button, IconButton, Stack, Typography } from '@mui/material';
+import { Box, Button, Card, CardActionArea, CardHeader, Avatar, CardMedia, CardActions, CardContent, IconButton, Stack, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import img14 from '../imgs/image14.png'
+import FeaturedAdvocates from '../components/FeaturedAdvocates';
+import { ChevronLeft, ChevronRight } from '@mui/icons-material';
+import Collapse from '@mui/material/Collapse';
+import { red } from '@mui/material/colors';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+
 
 export default function Home() {
+
     return (
         <>
             <Navbar />
@@ -27,7 +38,7 @@ export default function Home() {
                     position="absolute"
                     bottom="-40px"
                     transform="translateX(-50%)"
-                    left='28%'
+                    left='25%'
                     paddingX={5}
                     minHeight={80}
                     bgcolor={'lightblue'}
@@ -58,6 +69,201 @@ export default function Home() {
                         </Button>
                     </Stack>
                 </Box>
+            </Box>
+            <Box paddingY={9}>
+                <Typography variant='h4' fontWeight={'bold'}>Our Services</Typography>
+                <Stack direction={'row'} paddingTop={5} justifyContent={'center'} spacing={10}>
+
+                    <Card sx={{ maxWidth: 345 }} variant='outlined'>
+                        <CardActionArea>
+                            <CardMedia
+                                component="img"
+                                height="140"
+                                image="./image14.png"
+                                alt="green iguana"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="div">
+                                    Arbitrators
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    Description
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        {/* <CardActions>
+                        <Button size="small" color="primary">
+                        Share
+                        </Button>
+                    </CardActions> */}
+                    </Card>
+                    <Card sx={{ maxWidth: 345 }} variant='outlined'>
+                        <CardActionArea>
+                            <CardMedia
+                                component="img"
+                                height="140"
+                                image="/src/imgs/image14.png"
+                                alt="green iguana"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="div">
+                                    Mediators
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    Description
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        {/* <CardActions>
+                        <Button size="small" color="primary">
+                        Share
+                        </Button>
+                    </CardActions> */}
+                    </Card>
+                    <Card sx={{ maxWidth: 345 }} variant='outlined'>
+                        <CardActionArea>
+                            <CardMedia
+                                component="img"
+                                height="auto    "
+                                image={img14}
+                                alt="green iguana"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="div">
+                                    Notaries
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    Description
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        {/* <CardActions>
+                        <Button size="small" color="primary">
+                        Share
+                        </Button>
+                    </CardActions> */}
+                    </Card>
+                    <Card sx={{ maxWidth: 345 }} variant='outlined'>
+                        <CardActionArea>
+                            <CardMedia
+                                component="img"
+                                height="140"
+                                image="/static/images/cards/contemplative-reptile.jpg"
+                                alt="green iguana"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="div">
+                                    Legal Aid Clinics
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    Description
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        {/* <CardActions>
+                        <Button size="small" color="primary">
+                        Share
+                        </Button>
+                    </CardActions> */}
+                    </Card>
+                </Stack>
+            </Box>
+            <Box bgcolor="#4A154B" paddingY={5}>
+                <Typography variant='h4' paddingBottom={3} color={'white'} fontWeight={'bold'}>Featured Advocates</Typography>
+                <Stack spacing={2} alignItems={'start'} style={{ alignItems: 'center' }}>
+                    <Stack direction="row" spacing={25} justifyContent={'space-between'} style={{ alignItems: 'space-between' }}>
+                        <Stack direction="row" spacing={2}>
+                            <Button variant="text" style={{ color: 'white' }}>CRIMINAL</Button>
+                            <Button variant="text" style={{ color: 'white' }}>SUPREME COURT</Button>
+                            <Button variant="text" style={{ color: 'white' }}>FAMILY</Button>
+                            <Button variant="text" style={{ color: 'white' }}>CORPORATE</Button>
+                            <Button variant="text" style={{ color: 'white' }}>LABOR AND SERVICES</Button>
+                        </Stack>
+                        <Button variant='text' style={{ color: 'white' }}>View All</Button>
+                    </Stack>
+                    <Stack direction="row" spacing={2} justifyContent={'space-around'}>
+                        <FeaturedAdvocates />
+                    </Stack>
+                </Stack>
+            </Box>
+            <Box paddingY={5}>
+                <Typography variant='h4' paddingBottom={3} fontWeight={'bold'}>Trending Topics</Typography>
+                <Stack direction={'row'} spacing={2} style={{ justifyContent: 'center', alignItems: 'center' }}>
+                    <ChevronLeft fontSize='large' />
+                    <Card sx={{ maxWidth: 345 }} style={{ border: '1px solid black', borderRadius: '10px' }} >
+                        <CardHeader
+                            title="Blog"
+                        />
+                        <CardMedia
+                            component="img"
+                            height="194"
+                            image={img14}
+                            alt="Paella dish"
+                        />
+                        <CardContent>
+                            <Typography variant="h6" color="text.secondary">
+                                Title of Blog
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                This impressive paella is a perfect party dish and a fun meal to cook
+                                together with your guests. Add 1 cup of frozen peas along with the mussels,
+                                if you like.
+                            </Typography>
+                        </CardContent>
+                        <CardActions style={{ justifyContent: 'center' }}>
+                            <Button variant='text'>READ MORE BLOGS</Button>
+                        </CardActions>
+                    </Card>
+                    <Card sx={{ maxWidth: 345 }} style={{ border: '1px solid black', borderRadius: '10px' }} >
+                        <CardHeader
+                            title="Article"
+                        />
+                        <CardMedia
+                            component="img"
+                            height="194"
+                            image={img14}
+                            alt="Paella dish"
+                        />
+                        <CardContent>
+                            <Typography variant="h6" color="text.secondary">
+                                Title of Article
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                This impressive paella is a perfect party dish and a fun meal to cook
+                                together with your guests. Add 1 cup of frozen peas along with the mussels,
+                                if you like.
+                            </Typography>
+                        </CardContent>
+                        <CardActions style={{ justifyContent: 'center' }}>
+                            <Button variant='text'>READ MORE ARTICLES</Button>
+                        </CardActions>
+                    </Card>
+                    <Card sx={{ maxWidth: 345 }} style={{ border: '1px solid black', borderRadius: '10px' }} >
+                        <CardHeader
+                            title="Latest News"
+                        />
+                        <CardMedia
+                            component="img"
+                            height="194"
+                            image={img14}
+                            alt="Paella dish"
+                        />
+                        <CardContent>
+                            <Typography variant="h6" color="text.secondary">
+                                Title of News
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                This impressive paella is a perfect party dish and a fun meal to cook
+                                together with your guests. Add 1 cup of frozen peas along with the mussels,
+                                if you like.
+                            </Typography>
+                        </CardContent>
+                        <CardActions style={{ justifyContent: 'center' }}>
+                            <Button variant='text'>READ MORE NEWS</Button>
+                        </CardActions>
+                    </Card>
+                    <ChevronRight fontSize='large' />
+                </Stack>
             </Box>
         </>
     );
