@@ -60,15 +60,13 @@ export default function Advocate() {
                     </Stack>
                     <Stack direction={'row'}>
                         <Stack justifyContent={'space-around'}>
-                            <AspectRatio ratio="1" sx={{ minWidth: 150 }} style={{ backgroundColor: '#ECEEFD' }}>
                                 <img
                                     src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=286"
                                     srcSet="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=286&dpr=2 2x"
                                     loading="lazy"
                                     alt=""
-                                    style={{ borderRadius: '50%', border: '1px solid black' }}
+                                    style={{ width: '150px', borderRadius: '50%', border: '1px solid black' }}
                                 />
-                            </AspectRatio>
                             <Typography fontSize="xl" fontWeight="lg">
                                 Mit Chatrola
                             </Typography>
@@ -80,7 +78,7 @@ export default function Advocate() {
                                 <Typography minWidth={'fit-content'}>Ahmedabad</Typography>
                             </Stack>
                         </Stack>
-                        <CardContent align={'left'} style={{ marginLeft: '5%' }}>
+                        <CardContent align={'left'} style={{ marginLeft: '7%' }}>
                             <Stack alignItems={'space-between'} spacing={1}>
                                 <Typography fontSize={'lg'} fontWeight={'bold'}>Practice Area & Skills</Typography>
                                 <Typography>Arbitration, Cheque Bounce, Criminal, +3 More</Typography>
@@ -116,7 +114,7 @@ export default function Advocate() {
                                     <WorkspacePremiumIcon />
                                 </Stack>
                                 <Stack direction={'row'} spacing={2}>
-                                    <Button>Send Message</Button>
+                                    <Button variant='outlined'>Send Message</Button>
                                     <Button>View Profile</Button>
                                 </Stack>
                             </Stack>
