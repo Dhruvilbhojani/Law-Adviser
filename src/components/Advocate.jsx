@@ -1,30 +1,20 @@
 import React from 'react'
-import AspectRatio from '@mui/joy/AspectRatio';
-import Box from '@mui/joy/Box';
 import Button from '@mui/joy/Button';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
-import Sheet from '@mui/joy/Sheet';
-import { Stack, Tabs, Tab, tabsClasses } from '@mui/material';
+import { Stack } from '@mui/material';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarIcon from '@mui/icons-material/Star';
-import { Pin } from '@mui/icons-material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import WorkIcon from '@mui/icons-material/Work';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import VerifiedIcon from '@mui/icons-material/Verified';
 
-export default function Advocate() {
-    const [value, setValue] = React.useState(0);
+export default function Advocate(props) {
+    const advocate = props.advocateDetails;
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
-
+    const viewProfile = (e) => {
+        console.log(e.target.value);
+    }
     return (
         <>
             <Stack
@@ -46,76 +36,80 @@ export default function Advocate() {
                 >
                     <Stack direction={'row'} justifyContent={'space-between'}>
                         <Stack direction='row' style={{ color: '#e28743' }}>
-                            <Typography minWidth={'fit-content'}>4.8</Typography>
+                            <Typography minWidth={'fit-content'}>{advocate.userRating}</Typography>
                             <StarIcon />
                             <StarIcon />
                             <StarIcon />
                             <StarIcon />
                             <StarHalfIcon />
                         </Stack>
-                        <Stack direction={'row'} spacing={2}>
-                            <VerifiedIcon />
-                            <Typography>Verified</Typography>
-                        </Stack>
+                        {advocate.verified ?
+                            <Stack direction={'row'} spacing={2}>
+                                <VerifiedIcon />
+                                <Typography>Verified</Typography>
+                            </Stack> : <p></p>
+                        }
                     </Stack>
                     <Stack direction={'row'}>
-                        <Stack justifyContent={'space-around'}>
-                                <img
-                                    src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=286"
-                                    srcSet="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=286&dpr=2 2x"
-                                    loading="lazy"
-                                    alt=""
-                                    style={{ width: '150px', borderRadius: '50%', border: '1px solid black' }}
-                                />
+                        <Stack justifyContent={'space-around'} alignItems={'center'}>
+                            <img
+                                src={advocate.profileIcon ? advocate.profileIcon : <p></p>}
+                                srcSet={advocate.profileIcon}
+                                alt=""
+                                style={{ width: '150px', borderRadius: '50%', border: '1px solid black' }}
+                            />
                             <Typography fontSize="xl" fontWeight="lg">
-                                Mit Chatrola
+                                {advocate.name}
                             </Typography>
                             <Typography level="body-sm" fontWeight="lg" textColor="text.tertiary">
-                                Advocate
+                                {advocate.designation}
                             </Typography>
                             <Stack direction='row' justifyContent={'center'}>
                                 <LocationOnIcon />
-                                <Typography minWidth={'fit-content'}>Ahmedabad</Typography>
+                                <Typography minWidth={'fit-content'}>{advocate.location}</Typography>
                             </Stack>
                         </Stack>
                         <CardContent align={'left'} style={{ marginLeft: '7%' }}>
                             <Stack alignItems={'space-between'} spacing={1}>
                                 <Typography fontSize={'lg'} fontWeight={'bold'}>Practice Area & Skills</Typography>
-                                <Typography>Arbitration, Cheque Bounce, Criminal, +3 More</Typography>
+                                <Typography>{advocate.practiceArea ? advocate.practiceArea.join(', ') : <p></p>}</Typography>
                                 <Typography fontSize={'lg'} fontWeight={'bold'}>Hall of fame</Typography>
                                 <Stack direction='row' spacing={2}>
-                                    <img
-                                        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=286"
-                                        srcSet="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=286&dpr=2 2x"
-                                        loading="lazy"
-                                        alt=""
-                                        style={{ borderRadius: '15%', border: '1px solid black', height: '50px' }}
-                                    />
-                                    <img
-                                        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=286"
-                                        srcSet="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=286&dpr=2 2x"
-                                        loading="lazy"
-                                        alt=""
-                                        style={{ borderRadius: '15%', border: '1px solid black', height: '50px' }}
-                                    />
-                                    <img
-                                        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=286"
-                                        srcSet="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=286&dpr=2 2x"
-                                        loading="lazy"
-                                        alt=""
-                                        style={{ borderRadius: '15%', border: '1px solid black', height: '50px' }}
-                                    />
+                                    {advocate.hallOfFrames ? (
+                                        advocate.hallOfFrames.map((hallOfFrame, index) => (
+                                            <img
+                                                key={index}
+                                                src={hallOfFrame}
+                                                alt=""
+                                                style={{
+                                                    borderRadius: '15%',
+                                                    border: '1px solid black',
+                                                    height: '40px',
+                                                }}
+                                            />
+                                        ))
+                                    ) : (<p></p>)}
                                 </Stack>
                                 <Typography fontSize={'lg'} fontWeight={'bold'}>Medal</Typography>
                                 <Stack direction='row' spacing={2}>
-                                    <WorkspacePremiumIcon />
-                                    <WorkspacePremiumIcon />
-                                    <WorkspacePremiumIcon />
-                                    <WorkspacePremiumIcon />
+                                    {advocate.badges ? (
+                                        advocate.badges.map((badge, index) => (
+                                            <img
+                                                key={index}
+                                                src={badge}
+                                                alt=""
+                                                style={{
+                                                    borderRadius: '50%',
+                                                    border: '1px solid black',
+                                                    height: '35px',
+                                                }}
+                                            />
+                                        ))
+                                    ) : (<p></p>)}
                                 </Stack>
                                 <Stack direction={'row'} spacing={2}>
                                     <Button variant='outlined'>Send Message</Button>
-                                    <Button>View Profile</Button>
+                                    <Button value={advocate._id} onClick={viewProfile}>View Profile</Button>
                                 </Stack>
                             </Stack>
                         </CardContent>
