@@ -1,9 +1,9 @@
 import React from "react";
-import { Button, AppBar, Avatar, Box, Container, IconButton, Menu, MenuItem, Stack, Toolbar, Tooltip, Typography } from "@mui/material";
+import { Button, AppBar, Avatar, Box, Container, IconButton, Menu, MenuItem, Stack, Toolbar, Tooltip, Typography, Link } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const menus = [{ menu: 'Find Lawyer', link: '/search-lawyer' },{ menu: 'Legal Advice', link: '#' },{ menu: 'Legal News', link: '#' },{ menu: 'Legal Aid Services', link: '#' }];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function Hello() {
 
@@ -56,11 +56,13 @@ function Hello() {
                                     display: { xs: 'block', md: 'none' },
                                 }}
                             >
-                                {pages.map((page) => (
-                                    <MenuItem key={page}>
-                                        <Typography textAlign="center">{page}</Typography>
+                                {/* {menus.map((menu) => (
+                                    <MenuItem key={menu}>
+                                        <Link>
+                                            <Typography textAlign="center">{menu}</Typography>
+                                        </Link>
                                     </MenuItem>
-                                ))}
+                                ))} */}
                             </Menu>
                         </Box>
                         {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
@@ -82,16 +84,40 @@ function Hello() {
                         >
                             LOGO
                         </Typography>
-                        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                            {pages.map((page) => (
-                                <Button
-                                    key={page}
-                                    sx={{ my: 2, color: 'white', display: 'block' }}
-                                >
-                                    {page}
-                                </Button>
-                            ))}
-                        </Box>
+                        <Stack direction={'row'} sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                                <MenuItem>
+                                    <Button
+                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                        href={'./search-lawyer'}
+                                    >
+                                        Find Lawyer
+                                    </Button>
+                                </MenuItem>
+                                <MenuItem>
+                                    <Button
+                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                        href={'./law-advice'}
+                                    >
+                                        Legal Advice
+                                    </Button>
+                                </MenuItem>
+                                <MenuItem>
+                                    <Button
+                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                        href={'./#'}
+                                    >
+                                        Legal News
+                                    </Button>
+                                </MenuItem>
+                                <MenuItem>
+                                    <Button
+                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                        href={'./#'}
+                                    >
+                                        Legal Aid Services
+                                    </Button>
+                                </MenuItem>
+                        </Stack>
 
                         <Box sx={{ flexGrow: 0 }}>
                             <IconButton size="large" aria-label="search" color="inherit">

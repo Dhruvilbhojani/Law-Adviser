@@ -107,6 +107,7 @@ export default function SearchLawyer() {
                     return (
                         (filter.selectedCity === '' || filter.selectedCity === advo.location) &&
                         (filter.selectedCourt === '' || advo.courts.includes(filter.selectedCourt)) &&
+                        (filter.selectedCategory === '' || advo.practiceArea.includes(filter.selectedCategory)) &&
                         (filter.selectedLanguage === '' || advo.languages.includes(filter.selectedLanguage.toLowerCase()))
                     );
                 }));
@@ -119,10 +120,11 @@ export default function SearchLawyer() {
     return (
         <>
             <Navbar />
-            <Stack direction={'row'}>
+            <Stack direction={'row'} padding={3}>
                 <Stack>
                     <Stack
                         direction={'row'}
+                        paddingX={1}
                         style={{ alignItems: 'center' }}
                         justifyContent={'space-between'}
                     >
@@ -174,12 +176,12 @@ export default function SearchLawyer() {
                     </Button>
                 </Stack>
                 <Stack padding={5}>
-                    <Box style={{ alignSelf: 'start' }}>
+                    <Box style={{ alignSelf: 'center' }}>
                         <Typography variant="h4" fontWeight={'bold'} gutterBottom>
                             Consult Best Lawyers, Attorneys & Legal Advisors in India
                         </Typography>
                     </Box>
-                    <Grid padding={3} container spacing={2}>
+                    <Grid padding={3} container spacing={2} justifyContent={'center'}>
                         {
                             filteredAdvocates.map(advocate => {
                                 return <Grid item xs={6}>

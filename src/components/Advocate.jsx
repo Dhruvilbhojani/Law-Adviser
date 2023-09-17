@@ -30,7 +30,7 @@ export default function Advocate(props) {
                     style={{ backgroundColor: '#ECEEFD' }}
                     orientation="vertical"
                     sx={{
-                        minWidth: 'fit-content',
+                        minWidth: '100%',
                         overflow: 'auto'
                     }}
                 >

@@ -6,6 +6,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarIcon from '@mui/icons-material/Star';
 import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined';
+import PopupBox from '../components/PopupBox';
 
 export default function LawyerProfile() {
     const [advocate, setAdvocate] = React.useState({});
@@ -21,8 +22,17 @@ export default function LawyerProfile() {
             .catch((err) => { });
     }, []);
 
+    const [popup, setPopup] = React.useState(false);
+
+    const handleOpenPopup = () => {
+        setPopup(true);
+    }
+    const handleClosePopup = () => {
+        setPopup(false);
+    }
     return (
         <>
+            <PopupBox open={popup} handleClose={handleClosePopup} />
             <Navbar></Navbar>
             <Stack padding={5} spacing={1}>
                 <Stack direction={'row'}>
@@ -48,7 +58,7 @@ export default function LawyerProfile() {
                             </Stack>
                             <Stack direction={'row'} spacing={2}>
                                 <Button variant='outlined'>Send Message</Button>
-                                <Button variant='contained'>View Contact Number</Button>
+                                <Button variant='contained' onClick={handleOpenPopup}>View Contact Number</Button>
                             </Stack>
 
                         </Stack>

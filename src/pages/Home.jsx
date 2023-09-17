@@ -64,7 +64,7 @@ export default function Home() {
                     </Stack>
                 </Box>
             </Box>
-            <Box paddingY={9}>
+            <Box paddingY={9} textAlign={'center'}>
                 <Typography variant='h4' fontWeight={'bold'}>Our Services</Typography>
                 <Stack direction={'row'} paddingTop={5} justifyContent={'center'} spacing={10}>
 
@@ -162,7 +162,7 @@ export default function Home() {
                     </Card>
                 </Stack>
             </Box>
-            <Box bgcolor="#4A154B" paddingY={5}>
+            <Box bgcolor="#4A154B" paddingY={5} textAlign={'center'}>
                 <Typography variant='h4' paddingBottom={3} color={'white'} fontWeight={'bold'}>Featured Advocates</Typography>
                 <Stack spacing={2} alignItems={'start'} style={{ alignItems: 'center' }}>
                     <Stack direction="row" spacing={25} justifyContent={'space-between'} style={{ alignItems: 'space-between' }}>
@@ -180,7 +180,7 @@ export default function Home() {
                     </Stack>
                 </Stack>
             </Box>
-            <Box paddingY={5}>
+            <Box paddingY={5} textAlign={'center'}>
                 <Typography variant='h4' paddingBottom={3} fontWeight={'bold'}>Trending Topics</Typography>
                 <Stack direction={'row'} spacing={2} style={{ justifyContent: 'center', alignItems: 'center' }}>
                     <ChevronLeft fontSize='large' />
