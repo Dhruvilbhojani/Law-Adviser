@@ -5,12 +5,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import img14 from '../imgs/image14.png'
 import FeaturedAdvocates from '../components/FeaturedAdvocates';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
-import Collapse from '@mui/material/Collapse';
-import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 
 export default function Home() {

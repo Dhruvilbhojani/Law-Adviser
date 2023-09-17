@@ -5,7 +5,6 @@ import VerifiedIcon from '@mui/icons-material/Verified';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarIcon from '@mui/icons-material/Star';
-import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined';
 
 export default function LawyerProfile() {

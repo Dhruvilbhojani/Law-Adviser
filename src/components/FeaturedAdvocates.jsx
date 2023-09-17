@@ -1,15 +1,11 @@
 import React from 'react'
 import AspectRatio from '@mui/joy/AspectRatio';
-import Box from '@mui/joy/Box';
-import Button from '@mui/joy/Button';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
-import Sheet from '@mui/joy/Sheet';
-import { Stack, Tabs, Tab, tabsClasses } from '@mui/material';
+import { Stack } from '@mui/material';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarIcon from '@mui/icons-material/Star';
-import { Pin } from '@mui/icons-material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import WorkIcon from '@mui/icons-material/Work';
