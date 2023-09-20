@@ -73,7 +73,7 @@ function PopupBox({ open, handleClose }) {
                         </TextField>
                     </Stack>
                     <Stack direction={'row'} justifyContent={'space-between'}>
-                        <Button variant="contained" style={{ justifySelf: 'center' }}>Submit</Button>
+                        <Button onClick={handleClose} variant="contained" style={{ justifySelf: 'center' }}>Submit</Button>
                         <Button onClick={handleClose} color="primary">
                             Close
                         </Button>

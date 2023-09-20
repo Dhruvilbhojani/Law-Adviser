@@ -5,6 +5,8 @@ import SearchLawyer from "./pages/SearchLawyer";
 import LawyerProfile from "./pages/LawyerProfile";
 import LawAdvice from "./pages/LawAdvice";
 import Questions from "./pages/Questions";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/lawyer-profile" element={<LawyerProfile />} />
           <Route path="/law-advice" element={<LawAdvice />} />
           <Route path="/questions" element={<Questions />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </Router>
     </div>

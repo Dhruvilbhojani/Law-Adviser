@@ -7,16 +7,23 @@ import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarIcon from '@mui/icons-material/Star';
 import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined';
 import PopupBox from '../components/PopupBox';
+import PopupBoxMsg from '../components/PopupBoxMsg';
+import { differenceInYears, differenceInMonths } from 'date-fns';
 
 export default function LawyerProfile() {
     const [advocate, setAdvocate] = React.useState({});
     React.useEffect(() => {
-        const url = "https://naughty-suspenders-boa.cyclic.cloud/law-adviser/" + '65062e66a8a6f0bfebc6d4e2';
+        const pid = localStorage.getItem('view-profile');
+        console.log(pid);
+        const npid = pid.slice(1, -1);
+        const str1 = "https://nervous-cod-sneakers.cyclic.cloud/law-adviser";
+        const url = str1.concat("/", npid).toString();
+        console.log(url);
         fetch(url)
             .then((res) => res.json())
             .then((data) => {
+                console.log(data);
                 setAdvocate(data);
-                console.log(advocate);
             }
             )
             .catch((err) => { });
@@ -30,9 +37,18 @@ export default function LawyerProfile() {
     const handleClosePopup = () => {
         setPopup(false);
     }
+    const [popupmsg, setPopupmsg] = React.useState(false);
+
+    const handleOpenPopupmsg = () => {
+        setPopupmsg(true);
+    }
+    const handleClosePopupmsg = () => {
+        setPopupmsg(false);
+    }
     return (
         <>
             <PopupBox open={popup} handleClose={handleClosePopup} />
+            <PopupBoxMsg open={popupmsg} handleClose={handleClosePopupmsg} />
             <Navbar></Navbar>
             <Stack padding={5} spacing={1}>
                 <Stack direction={'row'}>
@@ -41,7 +57,7 @@ export default function LawyerProfile() {
                             src={advocate.profileIcon ? advocate.profileIcon : <p></p>}
                             srcSet={advocate.profileIcon}
                             alt=""
-                            style={{ width: '300px', borderRadius: '50%', border: '1px solid black' }}
+                            style={{ width: '300px', height: '300px', borderRadius: '50%', border: '1px solid black' }}
                         />
                         <Stack direction='row' justifyContent={'center'}>
                             <LocationOnIcon />
@@ -57,7 +73,7 @@ export default function LawyerProfile() {
                                 <VerifiedIcon />
                             </Stack>
                             <Stack direction={'row'} spacing={2}>
-                                <Button variant='outlined'>Send Message</Button>
+                                <Button variant='outlined' onClick={handleOpenPopupmsg}>Send Message</Button>
                                 <Button variant='contained' onClick={handleOpenPopup}>View Contact Number</Button>
                             </Stack>
 
@@ -169,8 +185,9 @@ export default function LawyerProfile() {
                     </Typography>
                 </Stack>
             </Stack>
+            {advocate.blogs || advocate.articles || advocate.videos ?
             <Stack padding={8} spacing={1} textAlign={'start'} style={{ backgroundColor: '#ECEEFD' }} >
-                <Typography variant='h5' color={'#4A154B'} fontWeight={'bold'}>
+                 <Typography variant='h5' color={'#4A154B'} fontWeight={'bold'}>
                     Legal Research Work
                 </Typography>
                 <Stack direction={'row'} spacing={2} style={{ overflowX: 'auto' }}>
@@ -250,10 +267,9 @@ export default function LawyerProfile() {
                             </CardActions>
                         </Card>) : <p></p>}
                 </Stack>
-            </Stack>
+            </Stack> : <></>}
             <Stack padding={8} spacing={3} textAlign={'start'} >
                 <Stack direction={'row'} justifyContent={'space-between'}>
-
                     <Typography variant='h5' color={'#4A154B'} fontWeight={'bold'}>
                         Popular Reviews
                     </Typography>
@@ -266,12 +282,18 @@ export default function LawyerProfile() {
                                 src={advocate.profileIcon ? advocate.profileIcon : <p></p>}
                                 srcSet={advocate.profileIcon}
                                 alt=""
-                                style={{ maxWidth: '45px', maxHeight: '45px', borderRadius: '50%', border: '1px solid black' }}
+                                style={{ width: '45px', height: '45px', borderRadius: '50%', border: '1px solid black' }}
                             />
                             <Stack style={{ width: '-webkit-fill-available', }} textAlign={'left'}>
                                 <Stack direction={'row'} style={{ width: '30%' }} justifyContent={'space-between'}>
                                     <Typography fontWeight={'bold'}>{review.personName}</Typography>
-                                    <Typography>{Math.floor((new Date() - new Date(review.date)) / (1000 * 60 * 60 * 24 * 365.25 / 12))} months ago</Typography>
+                                    <Typography>
+                                        {console.log(differenceInYears(new Date(), new Date(review.date)))}
+                                        {differenceInYears(new Date(), new Date(review.date))
+                                            ? differenceInYears(new Date(), new Date(review.date)).toString() + " Years ago"
+                                            : differenceInMonths(new Date(), new Date(review.date)).toString() + " Months ago"}
+                                    </Typography>
+
                                 </Stack>
                                 <Stack direction='row' style={{ color: '#e28743' }}>
                                     <StarIcon />

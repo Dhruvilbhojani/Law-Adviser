@@ -5,6 +5,11 @@ import SearchIcon from '@mui/icons-material/Search';
 import img14 from '../imgs/image14.png'
 import FeaturedAdvocates from '../components/FeaturedAdvocates';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
+import right from '../imgs/right.svg'
+import mediator from '../imgs/mediator.webp'
+import notary from '../imgs/notary.webp'
+import arbitrator from '../imgs/arbitrator.webp'
+import lac from '../imgs/lac.webp'
 
 
 export default function Home() {
@@ -26,7 +31,10 @@ export default function Home() {
                             <Button variant="contained">Ask Question</Button>
                         </Stack>
                     </Box>
-                    <Box width="50%">Right</Box>
+                    <Box width="50%">
+                        {/* <Avatar alt="Profile Image" src={right} /> */}
+                        <img src={right}></img>
+                    </Box>
                 </Stack>
                 <Box
                     position="absolute"
@@ -73,7 +81,8 @@ export default function Home() {
                             <CardMedia
                                 component="img"
                                 height="140"
-                                image="./image14.png"
+                                style={{ width: '200px' }}
+                                image={arbitrator}
                                 alt="green iguana"
                             />
                             <CardContent>
@@ -96,7 +105,8 @@ export default function Home() {
                             <CardMedia
                                 component="img"
                                 height="140"
-                                image="/src/imgs/image14.png"
+                                style={{ width: '200px' }}
+                                image={mediator}
                                 alt="green iguana"
                             />
                             <CardContent>
@@ -118,8 +128,9 @@ export default function Home() {
                         <CardActionArea>
                             <CardMedia
                                 component="img"
-                                height="auto    "
-                                image={img14}
+                                height="140"
+                                style={{ width: '200px' }}
+                                image={notary}
                                 alt="green iguana"
                             />
                             <CardContent>
@@ -141,8 +152,9 @@ export default function Home() {
                         <CardActionArea>
                             <CardMedia
                                 component="img"
+                                style={{ width: '300px' }}
                                 height="140"
-                                image="/static/images/cards/contemplative-reptile.jpg"
+                                image={lac}
                                 alt="green iguana"
                             />
                             <CardContent>

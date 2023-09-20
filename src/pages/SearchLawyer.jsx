@@ -81,10 +81,11 @@ export default function SearchLawyer() {
                 setLanguages(data.results.map((language) => language.text));
             })
             .catch((err) => { });
-        fetch("https://naughty-suspenders-boa.cyclic.cloud/law-adviser")
+        fetch("https://nervous-cod-sneakers.cyclic.cloud/law-adviser")
             .then((res) => res.json())
             .then((data) => {
                 setFilteredAdvocates(data);
+                console.log(filteredAdvocates);
             })
             .catch((err) => {
                 console.error(err);
@@ -99,7 +100,7 @@ export default function SearchLawyer() {
     };
 
     const handleSubmitFilter = () => {
-        fetch("https://naughty-suspenders-boa.cyclic.cloud/law-adviser")
+        fetch("https://nervous-cod-sneakers.cyclic.cloud/law-adviser")
             .then((res) => res.json())
             .then((data) => {
                 setFilteredAdvocates(data.filter((advo) => {
@@ -108,7 +109,7 @@ export default function SearchLawyer() {
                         (filter.selectedCity === '' || filter.selectedCity === advo.location) &&
                         (filter.selectedCourt === '' || advo.courts.includes(filter.selectedCourt)) &&
                         (filter.selectedCategory === '' || advo.practiceArea.includes(filter.selectedCategory)) &&
-                        (filter.selectedLanguage === '' || advo.languages.includes(filter.selectedLanguage.toLowerCase()))
+                        (filter.selectedLanguage === '' || advo.languages.includes(filter.selectedLanguage))
                     );
                 }));
             })
@@ -181,12 +182,12 @@ export default function SearchLawyer() {
                             Consult Best Lawyers, Attorneys & Legal Advisors in India
                         </Typography>
                     </Box>
-                    <Grid padding={3} container spacing={2} justifyContent={'center'}>
+                    <Grid paddingY={3} paddingX={1} container spacing={2} justifyContent={'center'}>
                         {
                             filteredAdvocates.map(advocate => {
-                                return <Grid item xs={6}>
+                                return <Stack width={'100%'} margin={2}>
                                     <Advocate advocateDetails={advocate} />
-                                </Grid>
+                                </Stack>
 
                             })
                         }

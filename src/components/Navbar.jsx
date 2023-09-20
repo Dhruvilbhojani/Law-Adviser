@@ -120,11 +120,11 @@ function Hello() {
                         </Stack>
 
                         <Box sx={{ flexGrow: 0 }}>
-                            <IconButton size="large" aria-label="search" color="inherit">
+                            {/* <IconButton size="large" aria-label="search" color="inherit">
                                 <SearchIcon />
-                            </IconButton>
+                            </IconButton> */}
                             <Tooltip title="Open settings">
-                                <Button variant="text" style={{ color: 'white' }}>Register/SignIn</Button>
+                                <Button variant="contained" style={{ color: 'white' }}>Register/SignIn</Button>
                             </Tooltip>
                             <Menu
                                 sx={{ mt: '45px' }}
