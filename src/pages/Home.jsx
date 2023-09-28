@@ -14,6 +14,48 @@ import lac from '../imgs/lac.webp'
 
 export default function Home() {
 
+    const [blogs, setBlogs] = React.useState({});
+    const [articles, setArticles] = React.useState({});
+    const [videos, setVideos] = React.useState({});
+    // const [filteredAdvocates, setFilteredAdvocates] = React.useState([{}]);
+    // const featuredData = [];
+    // const handleChange = (event, newValue) => {
+    //     setValue(newValue);
+    // };
+    // let item1;
+    // let item2;
+
+
+    React.useEffect(() => {
+        fetch("https://nervous-cod-sneakers.cyclic.cloud/blogs")
+            .then((res) => res.json())
+            .then((data) => {
+                setBlogs(data);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+        fetch("https://nervous-cod-sneakers.cyclic.cloud/articles")
+            .then((res) => res.json())
+            .then((data) => {
+                setArticles(data);
+
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+        fetch("https://nervous-cod-sneakers.cyclic.cloud/videos")
+            .then((res) => res.json())
+            .then((data) => {
+                setVideos(data);
+
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    }, []);
+
+    console.log(videos[0]);
     return (
         <>
             <Navbar />
@@ -196,72 +238,67 @@ export default function Home() {
                 <Typography variant='h4' paddingBottom={3} fontWeight={'bold'}>Trending Topics</Typography>
                 <Stack direction={'row'} spacing={2} style={{ justifyContent: 'center', alignItems: 'center' }}>
                     <ChevronLeft fontSize='large' />
-                    <Card sx={{ maxWidth: 345 }} style={{ border: '1px solid black', borderRadius: '10px' }} >
+                    <Card sx={{ maxWidth: 345, maxHeight: 500 }} style={{ border: '1px solid black', borderRadius: '10px' }} >
                         <CardHeader
                             title="Blog"
                         />
                         <CardMedia
                             component="img"
                             height="194"
-                            image={img14}
+                            image={blogs[0] ? blogs[0].image : <></>}
                             alt="Paella dish"
                         />
                         <CardContent>
                             <Typography variant="h6" color="text.secondary">
-                                Title of Blog
+                                {blogs[0] ? blogs[0].title : <></>}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
-                                This impressive paella is a perfect party dish and a fun meal to cook
-                                together with your guests. Add 1 cup of frozen peas along with the mussels,
-                                if you like.
+                                {blogs[0] ? blogs[0].description : <></>}
                             </Typography>
                         </CardContent>
                         <CardActions style={{ justifyContent: 'center' }}>
                             <Button variant='text'>READ MORE BLOGS</Button>
                         </CardActions>
                     </Card>
-                    <Card sx={{ maxWidth: 345 }} style={{ border: '1px solid black', borderRadius: '10px' }} >
+                    <Card sx={{ maxWidth: 345, maxHeight: 500 }} style={{ border: '1px solid black', borderRadius: '10px' }} >
                         <CardHeader
-                            title="Article"
+                            title="Articles"
                         />
                         <CardMedia
                             component="img"
                             height="194"
-                            image={img14}
+                            image={articles[0] ? articles[0].image : <></>}
                             alt="Paella dish"
                         />
                         <CardContent>
                             <Typography variant="h6" color="text.secondary">
-                                Title of Article
+                                {articles[0] ? articles[0].title : <></>}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
-                                This impressive paella is a perfect party dish and a fun meal to cook
-                                together with your guests. Add 1 cup of frozen peas along with the mussels,
-                                if you like.
+                                {articles[0] ? articles[0].description : <></>}
                             </Typography>
                         </CardContent>
                         <CardActions style={{ justifyContent: 'center' }}>
                             <Button variant='text'>READ MORE ARTICLES</Button>
                         </CardActions>
                     </Card>
-                    <Card sx={{ maxWidth: 345 }} style={{ border: '1px solid black', borderRadius: '10px' }} >
+
+                    <Card sx={{ maxWidth: 345, maxHeight: 500, minHeight: 500 }} style={{ border: '1px solid black', borderRadius: '10px' }} >
                         <CardHeader
                             title="Latest News"
                         />
                         <CardMedia
                             component="img"
                             height="194"
-                            image={img14}
+                            image={videos[0] ? videos[0].image : <></>}
                             alt="Paella dish"
                         />
                         <CardContent>
                             <Typography variant="h6" color="text.secondary">
-                                Title of News
+                            {videos[0] ? videos[0].title : <></>}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
-                                This impressive paella is a perfect party dish and a fun meal to cook
-                                together with your guests. Add 1 cup of frozen peas along with the mussels,
-                                if you like.
+                            {videos[0] ? videos[0].description : <></>}
                             </Typography>
                         </CardContent>
                         <CardActions style={{ justifyContent: 'center' }}>

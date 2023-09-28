@@ -8,12 +8,20 @@ import Button from "@mui/material/Button";
 import { Stack, TextField, Typography, MenuItem, Box, FormControlLabel, Checkbox, AppBar } from "@mui/material";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
+import { useNavigate } from 'react-router-dom';
+
 
 export default function ProfileDetails({ profile, setProfile, handleProfileChange, open, handleClose }) {
+    const navigate = useNavigate();
+
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
+    };
+
+    const handleNext = () => {
+        setValue((preValue) => preValue + 1);
     };
 
     const handleSubmit = () => {
@@ -51,7 +59,10 @@ export default function ProfileDetails({ profile, setProfile, handleProfileChang
                 'Content-Type': 'application/JSON'
             },
             body: JSON.stringify(finalProfile)
-        }).then(res => res.json()).then(data => console.log(data))
+        }).then(res => res.json()).then(data => {
+            console.log(data);
+            navigate('/')
+        })
     }
     // const [profile, setProfile] = React.useState({
     //     "password": "",
@@ -152,20 +163,20 @@ export default function ProfileDetails({ profile, setProfile, handleProfileChang
     }, []);
 
     return (
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog open={open} onClose={handleClose} style={{ overflow: 'hidden' }}>
             <DialogTitle display={'flex'} alignItems={'center'} justifyContent={'center'} width={'100%'} bgcolor={'#4354EE'} color={'white'} height={40}>
                 <Typography variant="h5">
                     Registration
                 </Typography>
             </DialogTitle>
-            <DialogContent>
-                <Tabs value={value} onChange={handleChange} aria-label="Tabs example">
+            <DialogContent width={'50%'} style={{ overflowX: 'hidden' }}>
+                <Tabs value={value} onChange={handleChange} aria-label="Tabs example" style={{ width: '900px', overflow: 'hidden' }}>
                     <Tab label="Step 1" />
                     <Tab label="Step 2" />
                     <Tab label="Step 3" />
                     <Tab label="Step 4" />
                 </Tabs>
-                <TabPanel height={'100vh'} value={value} index={0}>
+                <TabPanel height={'100vh'} value={value} index={0} style={{ overflow: 'hidden' }}>
                     <Typography variant="h5" alignSelf={'center'} color={'#4A154B'}>
                         Basic Details
                     </Typography>
@@ -225,8 +236,8 @@ export default function ProfileDetails({ profile, setProfile, handleProfileChang
                                 </Stack>
                             </Stack>
                         </Stack>
+                        <Button variant='contained' onClick={handleNext}>Next</Button>
                     </Stack>
-
                 </TabPanel>
                 <TabPanel height={'100vh'} value={value} index={1}>
                     <Typography variant="h5" alignSelf={'center'} color={'#4A154B'}>
@@ -297,6 +308,7 @@ export default function ProfileDetails({ profile, setProfile, handleProfileChang
                                 </TextField>
                             </Stack>
                         </Stack>
+                        <Button variant='contained' onClick={handleNext}>Next</Button>
                     </Stack>
 
 
@@ -320,6 +332,7 @@ export default function ProfileDetails({ profile, setProfile, handleProfileChang
                                 </Stack>
                             </Stack>
                         </Stack>
+                        <Button variant='contained' onClick={handleNext}>Next</Button>
                     </Stack>
                 </TabPanel>
                 <TabPanel height={'100vh'} width={'100%'} value={value} index={3}>
@@ -347,9 +360,9 @@ export default function ProfileDetails({ profile, setProfile, handleProfileChang
                                 </Stack>
                             </Stack>
                         </Stack>
-                        <Stack direction={'row'} justifyContent={'space-between'}>
+                        <Stack direction={'row'} width={'100%'} justifyContent={'space-between'}>
                             <Button variant="contained" style={{ justifySelf: 'center' }} onClick={handleSubmit}>Submit</Button>
-                            <Button onClick={handleClose} color="primary">
+                            <Button variant="outlined" onClick={handleClose} color="primary">
                                 Close
                             </Button>
                         </Stack>

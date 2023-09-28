@@ -44,11 +44,13 @@ const CustomFormControl = ({
 );
 
 export default function SearchLawyer() {
+    const gender = ["male", "female", "other"]
     const [filter, setFilter] = React.useState({
         selectedCity: '',
         selectedCourt: '',
         selectedCategory: '',
         selectedLanguage: '',
+        selectedGender: ''
     });
     const [filteredAdvocates, setFilteredAdvocates] = React.useState([]);
     const [cities, setCities] = React.useState([]);
@@ -85,7 +87,7 @@ export default function SearchLawyer() {
             .then((res) => res.json())
             .then((data) => {
                 setFilteredAdvocates(data);
-                console.log(filteredAdvocates);
+                // console.log(filteredAdvocates);
             })
             .catch((err) => {
                 console.error(err);
@@ -97,18 +99,21 @@ export default function SearchLawyer() {
             ...prevFilter,
             [property]: value,
         }));
+        console.log(filter.selectedGender);
     };
+    console.log(filter.selectedGender);
 
     const handleSubmitFilter = () => {
         fetch("https://nervous-cod-sneakers.cyclic.cloud/law-adviser")
             .then((res) => res.json())
             .then((data) => {
                 setFilteredAdvocates(data.filter((advo) => {
-                    console.log(advo);
+                    console.log(advo.gender);
                     return (
                         (filter.selectedCity === '' || filter.selectedCity === advo.location) &&
                         (filter.selectedCourt === '' || advo.courts.includes(filter.selectedCourt)) &&
                         (filter.selectedCategory === '' || advo.practiceArea.includes(filter.selectedCategory)) &&
+                        (filter.selectedGender === '' || advo.gender.toLowerCase() === filter.selectedGender) &&
                         (filter.selectedLanguage === '' || advo.languages.includes(filter.selectedLanguage))
                     );
                 }));
@@ -167,6 +172,16 @@ export default function SearchLawyer() {
                         }
                         label="Language"
                         options={languages}
+                    />
+                    <CustomFormControl
+                        labelId="language-label"
+                        id="language-select"
+                        value={filter.selectedGender}
+                        onChange={(e) =>
+                            handleFilterChange('selectedGender', e.target.value)
+                        }
+                        label="Gender"
+                        options={gender}
                     />
                     <Button
                         variant="contained"

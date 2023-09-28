@@ -132,7 +132,18 @@ export default function LawyerProfile() {
                 </Stack>
                 <Stack padding={3} alignItems={'start'} spacing={2}>
                     <Stack direction={'row'} spacing={3} alignItems={'center'}>
-                        <TranslateOutlinedIcon style={{ backgroundColor: 'blue', padding: '5', borderRadius: '50%', color: 'white' }} />
+                        <TranslateOutlinedIcon style={{ backgroundColor: '#2196f3', padding: '5', borderRadius: '50%', color: 'white' }} />
+                        <Typography variant='h6' fontWeight={'bold'}>
+                            About
+                        </Typography>
+                    </Stack>
+                    <Typography variant='body' textAlign={'justify'}>
+                        {advocate.description}
+                    </Typography>
+                </Stack>
+                <Stack padding={3} alignItems={'start'} spacing={2}>
+                    <Stack direction={'row'} spacing={3} alignItems={'center'}>
+                        <TranslateOutlinedIcon style={{ backgroundColor: '#2196f3', padding: '5', borderRadius: '50%', color: 'white' }} />
                         <Typography variant='h6' fontWeight={'bold'}>
                             Experience
                         </Typography>
@@ -143,7 +154,7 @@ export default function LawyerProfile() {
                 </Stack>
                 <Stack padding={3} alignItems={'start'} spacing={2}>
                     <Stack direction={'row'} spacing={3} alignItems={'center'}>
-                        <TranslateOutlinedIcon style={{ backgroundColor: 'blue', padding: '5', borderRadius: '50%', color: 'white' }} />
+                        <TranslateOutlinedIcon style={{ backgroundColor: '#2196f3', padding: '5', borderRadius: '50%', color: 'white' }} />
                         <Typography variant='h6' fontWeight={'bold'}>
                             Languages
                         </Typography>
@@ -154,7 +165,7 @@ export default function LawyerProfile() {
                 </Stack>
                 <Stack padding={3} alignItems={'start'} spacing={2}>
                     <Stack direction={'row'} spacing={3} alignItems={'center'}>
-                        <TranslateOutlinedIcon style={{ backgroundColor: 'blue', padding: '5', borderRadius: '50%', color: 'white' }} />
+                        <TranslateOutlinedIcon style={{ backgroundColor: '#2196f3', padding: '5', borderRadius: '50%', color: 'white' }} />
                         <Typography variant='h6' fontWeight={'bold'}>
                             Courts
                         </Typography>
@@ -165,7 +176,7 @@ export default function LawyerProfile() {
                 </Stack>
                 <Stack padding={3} alignItems={'start'} spacing={2}>
                     <Stack direction={'row'} spacing={3} alignItems={'center'}>
-                        <TranslateOutlinedIcon style={{ backgroundColor: 'blue', padding: '5', borderRadius: '50%', color: 'white' }} />
+                        <TranslateOutlinedIcon style={{ backgroundColor: '#2196f3', padding: '5', borderRadius: '50%', color: 'white' }} />
                         <Typography variant='h6' fontWeight={'bold'}>
                             Practice Areas
                         </Typography>
@@ -173,101 +184,91 @@ export default function LawyerProfile() {
                     <Typography variant='body' textAlign={'justify'}>
                         {advocate.practiceArea ? advocate.practiceArea.join(', ') : <p></p>}                    </Typography>
                 </Stack>
-                <Stack padding={3} alignItems={'start'} spacing={2}>
-                    <Stack direction={'row'} spacing={3} alignItems={'center'}>
-                        <TranslateOutlinedIcon style={{ backgroundColor: 'blue', padding: '5', borderRadius: '50%', color: 'white' }} />
-                        <Typography variant='h6' fontWeight={'bold'}>
-                            About
-                        </Typography>
-                    </Stack>
-                    <Typography variant='body' textAlign={'justify'}>
-                        {advocate.description}
-                    </Typography>
-                </Stack>
+
             </Stack>
             {advocate.blogs || advocate.articles || advocate.videos ?
-            <Stack padding={8} spacing={1} textAlign={'start'} style={{ backgroundColor: '#ECEEFD' }} >
-                 <Typography variant='h5' color={'#4A154B'} fontWeight={'bold'}>
-                    Legal Research Work
-                </Typography>
-                <Stack direction={'row'} spacing={2} style={{ overflowX: 'auto' }}>
-                    {advocate.blogs ? advocate.blogs.map(blog =>
-                        <Card sx={{ maxWidth: 345 }} style={{ border: '1px solid black', borderRadius: '10px', minWidth: '300px' }}>
-                            <CardMedia
-                                component="img"
-                                height="194"
-                                image={blog}
-                                alt="Blog"
-                            />
-                            <CardHeader
-                                title="Blog"
-                            />
-                            <CardContent>
-                                <Typography variant="h6" color="text.secondary">
-                                    Title of Blogs
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    This impressive paella is a perfect party dish and a fun meal to cook
-                                    together with your guests. Add 1 cup of frozen peas along with the mussels,
-                                    if you like.
-                                </Typography>
-                            </CardContent>
-                            <CardActions style={{ justifyContent: 'center' }}>
-                                <Button variant='text'>READ MORE BLOGS</Button>
-                            </CardActions>
-                        </Card>) : <p></p>}
-                    {advocate.articles ? advocate.articles.map(article =>
-                        <Card sx={{ maxWidth: 345 }} style={{ border: '1px solid black', borderRadius: '10px', minWidth: '300px' }}>
-                            <CardMedia
-                                component="img"
-                                height="194"
-                                image={article}
-                                alt="Article"
-                            />
-                            <CardHeader
-                                title="Article"
-                            />
-                            <CardContent>
-                                <Typography variant="h6" color="text.secondary">
-                                    Title of Articles
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    This impressive paella is a perfect party dish and a fun meal to cook
-                                    together with your guests. Add 1 cup of frozen peas along with the mussels,
-                                    if you like.
-                                </Typography>
-                            </CardContent>
-                            <CardActions style={{ justifyContent: 'center' }}>
-                                <Button variant='text'>READ MORE ARTICLES</Button>
-                            </CardActions>
-                        </Card>) : <p></p>}
-                    {advocate.videos ? advocate.videos.map(video =>
-                        <Card sx={{ maxWidth: 345 }} style={{ border: '1px solid black', borderRadius: '10px', minWidth: '300px' }}>
-                            <CardMedia
-                                component="img"
-                                height="194"
-                                image={video}
-                                alt="Video"
-                            />
-                            <CardHeader
-                                title="Video"
-                            />
-                            <CardContent>
-                                <Typography variant="h6" color="text.secondary">
-                                    Title of Videos
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    This impressive paella is a perfect party dish and a fun meal to cook
-                                    together with your guests. Add 1 cup of frozen peas along with the mussels,
-                                    if you like.
-                                </Typography>
-                            </CardContent>
-                            <CardActions style={{ justifyContent: 'center' }}>
-                                <Button variant='text'>READ MORE VIDEOS</Button>
-                            </CardActions>
-                        </Card>) : <p></p>}
-                </Stack>
-            </Stack> : <></>}
+                <Stack padding={8} spacing={1} textAlign={'start'} style={{ backgroundColor: '#ECEEFD' }} >
+                    <Typography variant='h5' color={'#4A154B'} fontWeight={'bold'}>
+                        Legal Research Work
+                    </Typography>
+                    <Stack direction={'row'} spacing={2} style={{ overflowX: 'auto' }}>
+                        {advocate.blogs ? advocate.blogs.map(blog =>
+                            <Card sx={{ maxWidth: 345 }} style={{ border: '1px solid black', borderRadius: '10px', minWidth: '300px' }}>
+                                <CardMedia
+                                    component="img"
+                                    height="194"
+                                    image={blog}
+                                    alt="Blog"
+                                />
+                                <CardHeader
+                                    title="Blog"
+                                />
+                                <CardContent>
+                                    <Typography variant="h6" color="text.secondary">
+                                        Title of Blogs
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        This impressive paella is a perfect party dish and a fun meal to cook
+                                        together with your guests. Add 1 cup of frozen peas along with the mussels,
+                                        if you like.
+                                    </Typography>
+                                </CardContent>
+                                <CardActions style={{ justifyContent: 'center' }}>
+                                    <Button variant='text'>READ MORE BLOGS</Button>
+                                </CardActions>
+                            </Card>) : <p></p>}
+                        {advocate.articles ? advocate.articles.map(article =>
+                            <Card sx={{ maxWidth: 345 }} style={{ border: '1px solid black', borderRadius: '10px', minWidth: '300px' }}>
+                                <CardMedia
+                                    component="img"
+                                    height="194"
+                                    image={article}
+                                    alt="Article"
+                                />
+                                <CardHeader
+                                    title="Article"
+                                />
+                                <CardContent>
+                                    <Typography variant="h6" color="text.secondary">
+                                        Title of Articles
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        This impressive paella is a perfect party dish and a fun meal to cook
+                                        together with your guests. Add 1 cup of frozen peas along with the mussels,
+                                        if you like.
+                                    </Typography>
+                                </CardContent>
+                                <CardActions style={{ justifyContent: 'center' }}>
+                                    <Button variant='text'>READ MORE ARTICLES</Button>
+                                </CardActions>
+                            </Card>) : <p></p>}
+                        {advocate.videos ? advocate.videos.map(video =>
+                            <Card sx={{ maxWidth: 345 }} style={{ border: '1px solid black', borderRadius: '10px', minWidth: '300px' }}>
+                                <CardMedia
+                                    component="img"
+                                    height="194"
+                                    image={video}
+                                    alt="Video"
+                                />
+                                <CardHeader
+                                    title="Video"
+                                />
+                                <CardContent>
+                                    <Typography variant="h6" color="text.secondary">
+                                        Title of Videos
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        This impressive paella is a perfect party dish and a fun meal to cook
+                                        together with your guests. Add 1 cup of frozen peas along with the mussels,
+                                        if you like.
+                                    </Typography>
+                                </CardContent>
+                                <CardActions style={{ justifyContent: 'center' }}>
+                                    <Button variant='text'>READ MORE VIDEOS</Button>
+                                </CardActions>
+                            </Card>) : <p></p>}
+                    </Stack>
+                </Stack> : <></>}
             <Stack padding={8} spacing={3} textAlign={'start'} >
                 <Stack direction={'row'} justifyContent={'space-between'}>
                     <Typography variant='h5' color={'#4A154B'} fontWeight={'bold'}>

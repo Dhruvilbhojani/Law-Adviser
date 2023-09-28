@@ -81,12 +81,16 @@ export default function Advocate(props) {
                         <CardContent align={'left'} style={{ marginLeft: '7%', minHeight: '300px' }}>
                             <Stack alignItems={'start'} justifyContent={'space-between'} style={{ minHeight: '300px' }} spacing={1}>
                                 <Typography fontSize={'lg'} fontWeight={'lg'}>Practice Area & Skills</Typography>
-                                <Typography>{advocate.practiceArea ? advocate.practiceArea.join(', ') : <p></p>}</Typography>
+                                <Typography>
+                                {advocate.practiceArea ? advocate.practiceArea.length < 5 ? <Typography textAlign={'justify'}>{advocate.practiceArea.join(', ')}</Typography> : <Typography textAlign={'justify'}> {advocate.practiceArea[0] + ", " + advocate.practiceArea[1] + ", " + advocate.practiceArea[2] + ", " + advocate.practiceArea[3] + ", " + advocate.practiceArea[4] + " + more"} </Typography> : (<p></p>)}
+
+                                    {/* {advocate.practiceArea ? advocate.practiceArea.join(', ') : <p></p>} */}
+                                    </Typography>
 
 
                                 {advocate.courts[0] ? <Typography fontSize={'lg'} fontWeight={'lg'}>Courts</Typography> : <p></p>}
                                 <Stack direction='row' spacing={2}>
-                                    {advocate.courts ? <Typography textAlign={'justify'}>{advocate.courts ? advocate.courts.join(', ') : <p></p>}</Typography> : (<p></p>)}
+                                    {advocate.courts ? advocate.courts.length < 5 ? <Typography textAlign={'justify'}>{advocate.courts.join(', ')}</Typography> : <Typography textAlign={'justify'}> {advocate.courts[0] + ", " + advocate.courts[1] + ", " + advocate.courts[2] + ", " + advocate.courts[3] + ", " + advocate.courts[4] + " + more"} </Typography> : (<p></p>)}
                                 </Stack>
                                 {advocate.badges ? <Typography fontSize={'lg'} fontWeight={'lg'}>Medal</Typography> : <p></p>}
                                 <Stack direction='row' spacing={2}>
@@ -114,9 +118,9 @@ export default function Advocate(props) {
                             </Stack>
                         </CardContent>
                     </Stack>
-                </Card>
+                </Card >
 
-            </Stack>
+            </Stack >
         </>
     )
 }

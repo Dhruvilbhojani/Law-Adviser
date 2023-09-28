@@ -1,11 +1,13 @@
 import React from 'react'
 import Navbar from "../components/Navbar"
-import { Box, Button, Stack, TextField, Typography } from '@mui/material'
+import { Button, Stack, TextField, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom';
-
 export default function Login() {
 
+
+
   const navigate = useNavigate();
+
 
   const [loginData, setLoginData] = React.useState({
     "type": "enrollmentNumber",
@@ -21,7 +23,7 @@ export default function Login() {
       [name]: value,
     });
   };
-  const handleSubmit = () => {
+  const handleSubmitProfile = () => {
     fetch('https://nervous-cod-sneakers.cyclic.cloud/law-adviser/login', {
       method: 'POST',
       headers: {
@@ -59,7 +61,7 @@ export default function Login() {
             <TextField style={{ width: '70%' }} id="outlined-basic" label="Enrollment Number" name="enrollmentNumber" variant="outlined" value={setLoginData.enrollmentNumber} onChange={handleProfileChange} />
             <TextField style={{ width: '70%' }} id="outlined-basic" label="Password" variant="outlined" name="password" value={setLoginData.password} onChange={handleProfileChange} />
             <Typography textAlign={'right'} width={'70%'} variant={'caption'}>Forgot Passoword?</Typography>
-            <Button variant={'contained'} onClick={handleSubmit}>Login</Button>
+            <Button variant={'contained'} onClick={handleSubmitProfile}>Login</Button>
             <Typography textAlign={'center'} variant={'caption'}>Don't have an Account?
               <Typography textAlign={'center'} color={'#4A154B'} variant={'p'} paddingX={2} fontWeight={'bold'}>Sign up</Typography>
             </Typography>

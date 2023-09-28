@@ -124,7 +124,7 @@ function Hello() {
                                 <SearchIcon />
                             </IconButton> */}
                             <Tooltip title="Open settings">
-                                <Button variant="contained" style={{ color: 'white' }}>Register/SignIn</Button>
+                                <Button variant="contained" href={'./register'} style={{ color: 'white' }}>Register/SignIn</Button>
                             </Tooltip>
                             <Menu
                                 sx={{ mt: '45px' }}
